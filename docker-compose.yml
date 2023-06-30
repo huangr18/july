@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  frontend:
+    build: frontend
+    ports:
+      - 6001:8501
+    depends_on:
+      - backend
+    volumes:
+        - ./storage:/storage
+  backend:
+    build: backend
+    ports:
+      - 6000:8080
+    volumes:
+      - ./storage:/storage
+
+    # # for GPU supports
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #       - driver: nvidia
+    #         device_ids: ['0']
+    #         capabilities: [gpu]
