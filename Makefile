@@ -1,5 +1,5 @@
 build:
-	# sh download_models.sh
+	sh download_models.sh
 	docker-compose build
 up:
 	docker-compose up

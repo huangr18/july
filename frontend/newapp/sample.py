@@ -6,6 +6,7 @@ from PIL import Image
 
 import subprocess
 
+
 def app(backend):
 
 
@@ -35,8 +36,16 @@ def app(backend):
                 with open('../../storage/sample/%s'%filename, "wb") as outfile:
             #         # Copy the BytesIO stream to the output file
                     outfile.write(bytesio.getbuffer())
+
+
             # write origin video to storage/sample folder
             write_bytesio_to_file(temp_file_to_save, origin_video)
+
+
+
+            res = requests.post(backend+f"/{temp_file_to_save}")
+            # res = res.json().get("name")
+            st.write(res)
 
             
 

@@ -33,6 +33,7 @@ def app(backend):
             original_image = Image.open(image)
 
             res = requests.post(backend+f"/{style}", files=files)
+            st.header(res)
             img_path = res.json()
             image = Image.open(img_path.get("name"))
 

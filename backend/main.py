@@ -75,11 +75,13 @@ async def get_segmentation_map(file: bytes = File(...)):
 
 
 # ****************************** Sample ******************************
-@app.post("/sample")
-async def save_video(file: UploadFile = File(...)):
 
+from aivision import runcv
+@app.post("/{temp_file_to_save}")
+def save_video(temp_file_to_save:str):
+    result_file_name = runcv(temp_file_to_save)
 
-    return file.name
+    return result_file_name
     # start = time.time()
     # return {"name": name, "time": time.time() - start}
 
